@@ -42,7 +42,9 @@ public class SnakeAndLadder {
         while (playerPositions[0] < WINNING_POSITION) {
             int diceValue = rollDice();
             diceRolls++;
+            System.out.println("Player " + (currentPlayer + 1) + " rolled a " + diceValue);
             movePlayer(diceValue);
+            System.out.println("Player " + (currentPlayer + 1) + " is now at position " + playerPositions[currentPlayer]);
         }
 
         System.out.println("Player wins after " + diceRolls + " rolls!");
