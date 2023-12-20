@@ -11,7 +11,7 @@ public class SnakeAndLadder {
 
     private static void movePlayer(int diceValue) {
         int newPosition = playerPositions[currentPlayer] + diceValue; // New position of the player
-        if (newPosition > WINNING_POSITION) return;
+        if (newPosition > WINNING_POSITION) return; // handles use case 5
         if (newPosition == WINNING_POSITION) {
             playerPositions[currentPlayer] = newPosition;
             return;
