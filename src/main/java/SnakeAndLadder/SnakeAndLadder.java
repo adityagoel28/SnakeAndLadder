@@ -36,6 +36,15 @@ public class SnakeAndLadder {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Snake and Ladder Simulator!");
+        playerPositions = new int[1]; // For single player
         int diceRolls = 0;
+
+        while (playerPositions[0] < WINNING_POSITION) {
+            int diceValue = rollDice();
+            diceRolls++;
+            movePlayer(diceValue);
+        }
+
+        System.out.println("Player wins after " + diceRolls + " rolls!");
     }
 }
