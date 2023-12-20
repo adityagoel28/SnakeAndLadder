@@ -8,6 +8,10 @@ public class SnakeAndLadder {
     private static int currentPlayer = 0;
     private static Random random = new Random();
 
+    private static void switchPlayers() {
+        if (currentPlayer == 0) currentPlayer = 1; // Switches player
+        else currentPlayer = 0;
+    }
 
     private static void movePlayer(int diceValue) {
         int newPosition = playerPositions[currentPlayer] + diceValue; // New position of the player
@@ -36,17 +40,20 @@ public class SnakeAndLadder {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Snake and Ladder Simulator!");
-        playerPositions = new int[1]; // For single player
+        playerPositions = new int[2]; // For two players
         int diceRolls = 0;
 
-        while (playerPositions[0] < WINNING_POSITION) {
+        while (playerPositions[0] < WINNING_POSITION && playerPositions[1] < WINNING_POSITION) { // checks if any player has won
             int diceValue = rollDice();
             diceRolls++;
             System.out.println("Player " + (currentPlayer + 1) + " rolled a " + diceValue);
             movePlayer(diceValue);
             System.out.println("Player " + (currentPlayer + 1) + " is now at position " + playerPositions[currentPlayer]);
+            if (playerPositions[currentPlayer] < WINNING_POSITION) {
+                switchPlayers();
+            }
         }
 
-        System.out.println("Player wins after " + diceRolls + " rolls!");
+        System.out.println("Player " + (currentPlayer + 1) + " wins after " + diceRolls + " rolls!");
     }
 }
